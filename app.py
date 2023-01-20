@@ -6,24 +6,6 @@ app = Flask(__name__)
 
 db = 'selva.db'
 
-def SGPtoIND_time(a):
-    b = a.split(" ")
-    c = b[1].split(":")
-
-    hr = int(c[0])
-    min = int(c[1])
-
-    hr_1 = hr + 6
-    if(hr_1 > 24):
-        hr_1 = hr_1 - 24
-
-    min_1 = min - 30
-    if(min_1 < 0):
-        min_1 = min_1 + 60
-
-    timestamp = b[0] + " " + str(hr_1) + ":" + str(min_1) + ":" + c[2]
-    return timestamp
-
 @app.route('/')
 def home():
     return redirect("https://deciduo.vercel.app", code=302)
@@ -55,8 +37,8 @@ def insert():
     value4 = request.args.get('value4')
     value5 = request.args.get('value5')
     value6 = request.args.get('value6')
-
-    time_now = str(datetime.datetime.now())
+    print(value1, value2, value3, value4, value6)
+    print(str(datetime.datetime.now()))
 
     conn = sqlite3.connect(db)
     print ("Opened database successfully")
@@ -65,7 +47,7 @@ def insert():
     #     VALUES (1, 'Paul', 32, 'California', 20000.00 )")
 
     conn.execute("INSERT INTO data (TIMESTAMP, VALUE_1, VALUE_2, VALUE_3, VALUE_4, VALUE_5, VALUE_6) VALUES(?, ?, ?, ?, ?, ?, ?)", 
-                    (SGPtoIND_time(time_now), value1, value2, value3, value4, value5, value6))
+                    (str(datetime.datetime.now()), value1, value2, value3, value4, value5, value6))
 
     conn.commit()
     print ("Records created successfully")
