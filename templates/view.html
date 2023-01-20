@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #view_table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #view_table td,
+        #view_table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #view_table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #view_table tr:hover {
+            background-color: #ddd;
+        }
+
+        #view_table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        div.r {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Machine log</h1>
+    <h3>All logs shown here</h3>
+
+    <table id="view_table">
+        <tr>
+            <th>ID</th>
+            <th>TimeStamp</th>
+            <th>Value 1</th>
+            <th>Value 2</th>
+            <th>Value 3</th>
+            <th>Value 4</th>
+            <th>Value 5</th>
+            <th>Value 6</th>
+        </tr>
+        {% for u in data %}
+        <tr>
+            <td>{{ u[0] }}</td>
+            <td>{{ u[1] }}</td>
+            <td>{{ u[2] }}</td>
+            <td>{{ u[3] }}</td>
+            <td>{{ u[4] }}</td>
+            <td>{{ u[5] }}</td>
+            <td>{{ u[6] }}</td>
+            <td>{{ u[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><br><br><br>
+    <br>
+
+    <div class="r">
+        <p>Developed by</p>
+        <h5>Deciduo LLP</h5>
+    </div>
+</body>
+
+</html>
